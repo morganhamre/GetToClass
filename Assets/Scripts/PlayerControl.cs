@@ -42,24 +42,25 @@ public class PlayerControl : MonoBehaviour
         rigidbod.position = pos;
     }
 
-    //void Hurt(){
-    //    hp--;
-    //    hpanel.SetLives(maxHP, hp);
-    //    if (hp <= 0){
-    //        Die();
-    //    }
-    //}
+    void Hurt(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        hp--;
+        hpanel.SetLives(maxHP, hp);
+        if (hp <= 0){
+            Die();
+        }
+    }
 
-    //void Die(){
-    //    Destroy(gameObject);
-    //    GameManager.instance.RestartTheGameAfterSeconds(1);
-    //}
+    void Die(){
+        Destroy(gameObject);
+        SceneManager.LoadScene("Level1");
+    }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Car"))
         {
-            GameManager.instance.RestartTheGameAfterSeconds(1);
+            Hurt();
         }
     }
 }

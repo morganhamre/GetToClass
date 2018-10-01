@@ -24,7 +24,7 @@ public class UIHealthPanel : MonoBehaviour
 	/// </summary>
 	/// <param name="lives">Lives.</param>
 	void UpdateHearts(int lives){
-		for (int i = 0; i < hearts.Length; i++) 
+        for (int i = 0; i < hearts.Length; i++) 
 		{
 			if (i < lives) {
 				hearts [i].enabled = true;
