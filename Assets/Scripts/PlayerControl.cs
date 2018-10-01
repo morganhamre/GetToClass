@@ -1,18 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
     public float speed;
     private Rigidbody2D rigidbod;
     public float step;
+    private UIHealthPanel hpanel;
+    private int hp;
+    public int maxHP = 3;
 
     // Use this for initialization
     void Start()
     {
+        hpanel = GameObject.FindObjectOfType<UIHealthPanel>();
+        hp = maxHP;
+        hpanel.SetLives(maxHP, hp);
         rigidbod = GetComponent<Rigidbody2D>();
-
     }
 
     // Update is called once per frame
@@ -34,5 +40,26 @@ public class PlayerControl : MonoBehaviour
         }
 
         rigidbod.position = pos;
+    }
+
+    //void Hurt(){
+    //    hp--;
+    //    hpanel.SetLives(maxHP, hp);
+    //    if (hp <= 0){
+    //        Die();
+    //    }
+    //}
+
+    //void Die(){
+    //    Destroy(gameObject);
+    //    GameManager.instance.RestartTheGameAfterSeconds(1);
+    //}
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Car"))
+        {
+            GameManager.instance.RestartTheGameAfterSeconds(1);
+        }
     }
 }
