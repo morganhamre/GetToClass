@@ -2,15 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VehicleControl : MonoBehaviour {
+public class VehicleControl : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    float speed;
+    Vector2 direction = new Vector2();
+    float moveDirection = 1;
+
+    // Use this for initialization
+    void Start()
+    {
+        speed = 2;
+        direction.x = moveDirection;
+        direction.y = 0;
+        direction.Normalize();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        transform.position = transform.position + new Vector3(direction.x, direction.y, 0) * speed * Time.deltaTime;
+
+    }
 }
