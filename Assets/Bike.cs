@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Car : MonoBehaviour {
+public class Bike : MonoBehaviour {
     public float speed;
     Vector2 direction = new Vector2();
     public float moveDirection = 1;

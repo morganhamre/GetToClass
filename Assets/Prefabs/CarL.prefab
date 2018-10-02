@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114892027691876940}
   m_Layer: 0
   m_Name: CarL
-  m_TagString: Car
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,7 +54,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -109,6 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a970b65faf84bd89d634927ee76571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  moveDirection: -1
 --- !u!212 &212863030419992028
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class UIHealthPanel : MonoBehaviour
 {
-
-	[SerializeField] Image[] hearts;
+   
+    public static int maxLives = 3;
+    [SerializeField] Image[] hearts = new Image[maxLives];
 
 
 	public void SetLives (int maxLives, int lives)
@@ -19,11 +20,7 @@ public class UIHealthPanel : MonoBehaviour
 	/// </summary>
 	/// <param name="lives">Lives.</param>
 
-	/// <summary>
-	/// Updates the hearts by modifying its image component depending of the number of lives.
-	/// </summary>
-	/// <param name="lives">Lives.</param>
-	void UpdateHearts(int lives){
+    void UpdateHearts(int lives){
         for (int i = 0; i < hearts.Length; i++) 
 		{
 			if (i < lives) {

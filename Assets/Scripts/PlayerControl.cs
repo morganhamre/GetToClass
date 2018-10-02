@@ -9,8 +9,18 @@ public class PlayerControl : MonoBehaviour
     private Rigidbody2D rigidbod;
     public float step;
     private UIHealthPanel hpanel;
-    private int hp;
+    public int hp;
     public int maxHP = 3;
+
+    public Sprite spriteLeftA;
+    public Sprite spriteLeftB;
+    public Sprite spriteRightA;
+    public Sprite spriteRightB;
+    public Sprite forwardL;
+    public Sprite forwardR;
+    public Sprite stand;
+    private SpriteRenderer sprRend;
+
 
     // Use this for initialization
     void Start()
@@ -19,21 +29,46 @@ public class PlayerControl : MonoBehaviour
         hp = maxHP;
         hpanel.SetLives(maxHP, hp);
         rigidbod = GetComponent<Rigidbody2D>();
+        sprRend = GetComponent<SpriteRenderer>();
+        sprRend.sprite = stand;
     }
 
     // Update is called once per frame
     void Update()
     {
         Vector2 pos = rigidbod.position;
+        Vector2 normalizedDir = rigidbod.velocity.normalized;
+        transform.up = normalizedDir;
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             pos.y += step;
+            if (sprRend.sprite == forwardL)
+            {
+                sprRend.sprite = forwardR;
+            }
+            else
+            {
+                sprRend.sprite = forwardL;
+            }
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow)){
             pos.x -= step;
+            if(sprRend.sprite == spriteLeftA){
+                sprRend.sprite = spriteLeftB;
+            } else{
+                sprRend.sprite = spriteLeftA;
+            }
         }
         if(Input.GetKeyDown(KeyCode.RightArrow)){
             pos.x += step;
+            if (sprRend.sprite == spriteRightA)
+            {
+                sprRend.sprite = spriteRightB;
+            }
+            else
+            {
+                sprRend.sprite = spriteRightA;
+            }
         }
         if(Input.GetKeyDown(KeyCode.DownArrow)){
             pos.y -= step;
@@ -43,7 +78,10 @@ public class PlayerControl : MonoBehaviour
     }
 
     void Hurt(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Vector2 pos = rigidbod.position;
+        pos.y = (float) -4.5;
+        pos.x = (float) -3.5;
+        rigidbod.position = pos;
         hp--;
         hpanel.SetLives(maxHP, hp);
         if (hp <= 0){
@@ -58,7 +96,7 @@ public class PlayerControl : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Car"))
+        if (col.gameObject.CompareTag("Vehicle"))
         {
             Hurt();
         }
