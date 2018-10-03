@@ -503,6 +503,16 @@ Prefab:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 60264981425119216, guid: 11857657a808c4b1da2d0a9a0ee312ce,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 50136562071522702, guid: 11857657a808c4b1da2d0a9a0ee312ce,
+        type: 2}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11857657a808c4b1da2d0a9a0ee312ce, type: 2}
   m_IsPrefabAsset: 0
@@ -571,7 +581,7 @@ GameObject:
   - component: {fileID: 550730352}
   m_Layer: 0
   m_Name: vestamager
-  m_TagString: Goal
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -671,7 +681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1aceda3664c0448c81a43ed993010c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  counter: 1
+  levelCounter: 1
 --- !u!1 &755056988
 GameObject:
   m_ObjectHideFlags: 0

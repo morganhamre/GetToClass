@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour {
     public int levelCounter = 1;
 
-    void OnTriggerEnter(Collider ChangeScene)
+    public void OnTriggerEnter(Collider ChangeScene)
     {
         if(ChangeScene.gameObject.CompareTag("Player")){
-            SceneManager.LoadScene(levelCounter);
+            SceneManager.LoadScene("2");
             levelCounter++;
         }
     }
