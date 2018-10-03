@@ -21,6 +21,8 @@ public class PlayerControl : MonoBehaviour
     public Sprite stand;
     private SpriteRenderer sprRend;
 
+    public int maxLevel = 5;
+
 
     // Use this for initialization
     void Start()
@@ -92,13 +94,15 @@ public class PlayerControl : MonoBehaviour
     void Die(){
         Destroy(gameObject);
         SceneManager.LoadScene("Level1");
+        //Maybe load main menu? Text saying game over, play again?
     }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Vehicle"))
+        if (col.gameObject.CompareTag("Vehicle") || col.gameObject.CompareTag("Water"))
         {
             Hurt();
         }
+
     }
 }

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Car
   - Vehicle
+  - Water
+  - Boat
+  - Goal
   layers:
   - Default
   - TransparentFX
