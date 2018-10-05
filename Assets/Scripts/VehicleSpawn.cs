@@ -11,7 +11,7 @@ public class VehicleSpawn : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(lastSpawnTime+1/spawnRate < Time.time){
+        if(lastSpawnTime+1/spawnRate < Time.time+1){
             lastSpawnTime = Time.time;
             Vector3 spawnPosition = transform.position;
             spawnPosition += new Vector3(spawnWidth, 0, 0);

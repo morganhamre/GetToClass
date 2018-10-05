@@ -7,20 +7,16 @@ public class UIHealthPanel : MonoBehaviour
 {
    
     public static int maxLives = 3;
+    public int currentLives = 3;
     [SerializeField] Image[] hearts = new Image[maxLives];
 
-
-	public void SetLives (int maxLives, int lives)
-	{
-		UpdateHearts (lives);
-	}
 
 	/// <summary>
 	/// Updates the text simply by setting it to the number of lives.
 	/// </summary>
 	/// <param name="lives">Lives.</param>
 
-    void UpdateHearts(int lives){
+    public void UpdateHearts(int lives){
         for (int i = 0; i < hearts.Length; i++) 
 		{
 			if (i < lives) {

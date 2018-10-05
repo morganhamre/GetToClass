@@ -9,6 +9,10 @@ TagManager:
   - Water
   - Boat
   - Goal
+  - ChangeScene
+  - PowerUp
+  - Police
+  - ShowOnMenu
   layers:
   - Default
   - TransparentFX

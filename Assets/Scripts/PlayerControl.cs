@@ -21,15 +21,12 @@ public class PlayerControl : MonoBehaviour
     public Sprite stand;
     private SpriteRenderer sprRend;
 
-    public int maxLevel = 5;
-
 
     // Use this for initialization
     void Start()
     {
-        hpanel = GameObject.FindObjectOfType<UIHealthPanel>();
+        hpanel = Object.FindObjectOfType<UIHealthPanel>();
         hp = maxHP;
-        hpanel.SetLives(maxHP, hp);
         rigidbod = GetComponent<Rigidbody2D>();
         sprRend = GetComponent<SpriteRenderer>();
         sprRend.sprite = stand;
@@ -74,6 +71,7 @@ public class PlayerControl : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.DownArrow)){
             pos.y -= step;
+            sprRend.sprite = stand;
         }
 
         rigidbod.position = pos;
@@ -85,7 +83,8 @@ public class PlayerControl : MonoBehaviour
         pos.x = (float) -3.5;
         rigidbod.position = pos;
         hp--;
-        hpanel.SetLives(maxHP, hp);
+        //hpanel.SetLives(maxHP, hp);
+        hpanel.UpdateHearts(hp);
         if (hp <= 0){
             Die();
         }
@@ -93,14 +92,24 @@ public class PlayerControl : MonoBehaviour
 
     void Die(){
         Destroy(gameObject);
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Game Over");
         //Maybe load main menu? Text saying game over, play again?
     }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Vehicle") || col.gameObject.CompareTag("Water"))
+        if (col.gameObject.CompareTag("Vehicle"))
         {
+            Hurt();
+        }
+
+        if(col.gameObject.CompareTag("Police")){
+            Vector2 pos = rigidbod.position;
+            pos.x -= (float) 2;
+            rigidbod.position = pos;
+        }
+
+        if(col.gameObject.CompareTag("Water")){
             Hurt();
         }
 
